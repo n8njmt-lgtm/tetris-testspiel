@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050b1d" />
+    <meta name="description" content="Ein kleines, responsives Tetris-Spiel für Desktop und Smartphone." />
+    <title>Tetris – Codex Cloud Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="game-header">
+        <div class="brand" aria-label="Tetris">
+          <span class="brand-blocks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <h1>TETRIS</h1>
+        </div>
+        <button class="icon-button" id="restartTop" type="button" aria-label="Spiel neu starten" title="Neu starten">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M5.7 9a7 7 0 0 1 11.7-2.6L20 9M4 15l2.6 2.6A7 7 0 0 0 18.3 15" /></svg>
+        </button>
+      </header>
+
+      <section class="game-layout" aria-label="Tetris-Spiel">
+        <div class="board-wrap">
+          <canvas id="game" width="300" height="600" aria-label="Tetris-Spielfeld, 10 mal 20 Felder"></canvas>
+          <div class="game-overlay" id="overlay">
+            <p class="overlay-kicker" id="overlayKicker">Bereit?</p>
+            <p class="overlay-title" id="overlayTitle">Starte dein Spiel</p>
+            <button class="primary-button" id="overlayButton" type="button">START</button>
+          </div>
+        </div>
+
+        <aside class="side-rail">
+          <section class="next-panel" aria-labelledby="next-title">
+            <h2 id="next-title">NÄCHSTER STEIN</h2>
+            <canvas id="next" width="180" height="100" aria-label="Vorschau des nächsten Steins"></canvas>
+          </section>
+
+          <dl class="stats">
+            <div><dt>PUNKTE</dt><dd id="score">0</dd></div>
+            <div><dt>LINIEN</dt><dd id="lines">0</dd></div>
+            <div><dt>LEVEL</dt><dd id="level">1</dd></div>
+          </dl>
+
+          <div class="actions">
+            <button class="primary-button" id="startButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg>
+              <span>START</span>
+            </button>
+            <button class="secondary-button" id="pauseButton" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14M17 5v14" /></svg>
+              <span>PAUSE</span>
+            </button>
+            <button class="secondary-button" id="restartButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M5.7 9a7 7 0 0 1 11.7-2.6L20 9M4 15l2.6 2.6A7 7 0 0 0 18.3 15" /></svg>
+              <span>NEU STARTEN</span>
+            </button>
+          </div>
+
+          <section class="controls-help" aria-labelledby="controls-title">
+            <h2 id="controls-title">Steuerung</h2>
+            <div><kbd>←</kbd><kbd>→</kbd><span>bewegen</span></div>
+            <div><kbd>↑</kbd><span>drehen</span></div>
+            <div><kbd>↓</kbd><span>schneller</span></div>
+            <div><kbd>Leertaste</kbd><span>fallen</span></div>
+          </section>
+        </aside>
+      </section>
+
+      <nav class="touch-controls" aria-label="Touch-Steuerung">
+        <button type="button" data-action="left" aria-label="Nach links"><span>←</span></button>
+        <button type="button" data-action="rotate" aria-label="Drehen"><span>↻</span></button>
+        <button type="button" data-action="right" aria-label="Nach rechts"><span>→</span></button>
+        <button type="button" data-action="down" aria-label="Schneller nach unten"><span>↓</span></button>
+        <button class="drop" type="button" data-action="drop" aria-label="Sofort fallen lassen"><span>⇣</span></button>
+      </nav>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
